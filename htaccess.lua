@@ -793,6 +793,7 @@ local replace_server_vars = function(str, track_used_headers)
 		elseif svar == 'time' then -- %{TIME}
 			replace = os.date('%Y%m%d%H%M%S')
 		end
+		replace = replace:gsub("%%", "%%%%")
 		result = result:gsub('%%{'..org_svar..'}', replace)..''
 	end
 	if track_used_headers then
